@@ -1,180 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 /* Basic Reset & Body Styling */
 :root {
-    --primary-purple: #B084CC;
-    --primary-purple-darker: #8E69A6;
-    --accent-lavender: #D4C2E0; /* Lighter lavender from inspiration */
-    --text-dark: #333;
-    --text-light: #f0f0f0;
-    --background-light: #f9f9f9;
-    --background-white: #FFFFFF;
-    --link-color: #5D5D81;
-    --link-hover-color: #3E3E52;
-    --border-color: #E0E0E0;
+    /* New Dribbble-inspired Palette */
+    --bg-primary: #FFFBF7; /* Warm cream/off-white */
+    --bg-secondary: #FFFFFF; /* Pure white for cards/elements if needed */
+
+    --accent-lavender: #D0BADF; /* Soft, muted lavender */
+    --accent-lavender-darker: #BBA8CF; /* For hover states */
+    --accent-pink: #F5E0E5;      /* Soft, dusty rose */
+    --accent-pink-darker: #EACBD2;   /* For hover states */
+
+    --text-heading: #5C5470;     /* Darker, desaturated purple/grey for headings */
+    --text-body: #7A758C;        /* Softer dark grey/muted purple for body text */
+    --text-light: #FFFFFF;       /* For text on dark backgrounds */
+    --text-on-accent: #FFFFFF;   /* Text color for buttons with accent bg */
+    --text-logo: #4A4A6A;        /* Slightly punchier for logo */
+
+    --border-soft: #EAE4DD;      /* Very light border, derived from bg-primary */
+    --border-input: #D5C9C1;     /* Slightly more visible for inputs */
+
+    /* Button Specific */
+    --button-primary-bg: var(--accent-lavender);
+    --button-primary-text: var(--text-on-accent);
+    --button-primary-hover-bg: var(--accent-lavender-darker);
+
+    --button-secondary-bg: var(--accent-pink);
+    --button-secondary-text: var(--text-heading); /* Pink is light, needs darker text */
+    --button-secondary-hover-bg: var(--accent-pink-darker);
+
+    /* Link Specific */
+    --link-color: var(--accent-lavender);
+    --link-hover-color: var(--accent-lavender-darker);
+
+    /* Old variables to be phased out or remapped if necessary */
+    /* --primary-purple: #B084CC; */
+    /* --primary-purple-darker: #8E69A6; */
+    /* --text-dark: #333; */
+    /* --background-light: #f9f9f9; */
+    /* --background-white: #FFFFFF; */
+    /* --border-color: #E0E0E0; */
 }
 
-body, h1, h2, h3, p, ul, li, a, form, input, textarea, button {
+body, h1, h2, h3, h4, h5, h6, p, ul, li, a, form, input, textarea, button, select {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern, sleek font */
-    color: var(--text-dark);
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    color: var(--text-body);
+    -webkit-font-smoothing: antialiased; /* Smoother fonts */
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    line-height: 1.6;
-    background-color: var(--background-light);
+    line-height: 1.7; /* Increased for better readability with Poppins/Montserrat */
+    background-color: var(--bg-primary);
     overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-heading);
+    font-weight: 300; /* Light weight for headings as per Dribbble style */
+    margin-bottom: 0.75em; /* Consistent margin */
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.8em; } /* Will adjust per component later if needed */
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+
+p {
+    margin-bottom: 1em;
 }
 
 a {
     text-decoration: none;
     color: var(--link-color);
+    transition: color 0.3s ease;
 }
 
 a:hover {
     color: var(--link-hover-color);
 }
 
-/* Header & Navigation */
-header {
-    background-color: var(--background-white);
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-nav .logo {
-    font-size: 1.8em;
-    font-weight: 400; /* Slightly lighter for a sleeker look */
-    color: var(--text-dark);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 25px;
-}
-
-nav ul li a {
-    font-size: 1em;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 5px 0; /* Add some padding for the border to sit nicely */
-    border-bottom: 2px solid transparent; /* Placeholder for active border */
-}
-
-nav ul li a.active-nav-link {
-    color: var(--primary-purple);
-    font-weight: bold;
-    border-bottom: 2px solid var(--primary-purple);
-}
-
-/* Main Content Area */
+/* General Page Structure */
 main {
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
+    margin: 0 auto; /* Removed top/bottom margin, handled by sections or header/footer */
+    padding: 0 2rem; /* Keep side padding for content */
+    width: 100%;
 }
 
 section {
-    padding: 40px 20px;
+    padding: 60px 20px; /* Increased padding for more whitespace */
+    margin-bottom: 0; /* Remove default bottom margin, manage spacing with padding */
+    background-color: var(--bg-secondary); /* Use secondary bg for sections (e.g. white) */
+    border-radius: 20px; /* Softer, larger border radius for cards/sections */
+    /* box-shadow: 0 4px 15px rgba(0,0,0,0.03); Removed for now, Dribbble is very flat */
+}
+
+/* Ensure sections directly under main or specific contexts have spacing if needed */
+/* main > section {
+    margin-top: 30px;
     margin-bottom: 30px;
-    background-color: var(--background-white);
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+} */
+/* Re-evaluating section spacing: let's make it more consistent.
+   The header is sticky. Content sections should have top/bottom margin.
+   Hero sections, if they are the first child of main, might not need a top margin.
+*/
+main > section {
+    margin-left: auto; /* Centering sections if max-width is applied to them directly */
+    margin-right: auto;
+    margin-top: 40px; /* Consistent vertical spacing */
+    margin-bottom: 40px;
+    max-width: 1100px; /* Max width for content sections within main */
 }
 
-h1, h2 {
-    margin-bottom: 20px;
-    color: var(--text-dark);
+main > .hero-section { /* Hero sections can be wider or full-width */
+    max-width: none; /* Override max-width for hero sections */
+    margin-top: 0; /* No top margin if it's the first element after header */
+    /* border-radius for hero might be different, handled in .hero-section */
 }
 
-h1 {
-    font-size: 2.8em; /* Larger for main page titles */
-    font-weight: 300; /* Lighter weight for modern feel */
-    text-align: center;
+
+/* Content Typography & Element Styling */
+section h1, section h2, section h3 { /* More specific targeting for headings within sections */
+    /* General heading styles are already set in body, h1, h2 etc. */
+    /* This is for context-specific overrides if needed */
 }
 
-h2 {
-    font-size: 2em;
-    font-weight: 400;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
+h2 { /* Global h2, often used as section titles */
+    border-bottom: none; /* Remove border from previous design */
+    text-align: center; /* Center section titles by default */
+    margin-bottom: 1.5em; /* More space after section titles */
+    font-weight: 400; /* Slightly bolder for section titles than default h_ weight */
 }
 
-p {
-    margin-bottom: 15px;
-    font-size: 1.05em;
-}
 
 /* Hero Sections (General) */
-#hero, #about-hero, #services-hero, #contact-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/salon-hero-placeholder.jpg') no-repeat center center/cover; /* Placeholder - replace with actual image */
-    color: #fff;
+/* All hero sections will share these base styles */
+.hero-section { /* Added a common class to target all hero sections */
+    background: url('../images/salon-hero-placeholder.jpg') no-repeat center center/cover;
+    /* Replace with a very subtle gradient if needed for text contrast, or none */
+    /* background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('../images/salon-hero-placeholder.jpg') no-repeat center center/cover; */
     text-align: center;
-    padding: 80px 20px;
-    border-radius: 8px;
+    padding: 100px 20px; /* Default padding, can be overridden */
+    min-height: 40vh; /* Ensure a minimum height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light); /* Default text color for heroes, assuming dark/colorful bg */
+    border-radius: 0; /* Hero sections are often full-width or have different rounding */
+    margin: 0; /* Remove margin for hero if it's full-width */
 }
 
-#hero h1, #about-hero h1, #services-hero h1, #contact-hero h1 {
-    font-size: 3.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #fff;
-}
+/* Specific Hero page IDs will now primarily use the .hero-section class */
+/* #hero, #about-hero, #services-hero, #contact-hero { } */ /* Keep IDs for JS fade-in, but style via .hero-section */
 
-#hero p, #about-hero p, #services-hero p, #contact-hero p {
-    font-size: 1.5em;
+
+.hero-section h1 {
+    font-size: 3.8em; /* Increased size for more impact */
     font-weight: 300;
-    color: #f0f0f0;
+    color: var(--text-light);
+    margin-bottom: 0.4em; /* Slightly less margin */
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35); /* Slightly stronger shadow */
+    letter-spacing: 1.5px; /* More open */
 }
+
+.hero-section p {
+    font-size: 1.4em; /* Increased size */
+    font-weight: 300;
+    color: var(--text-light);
+    opacity: 0.9;
+    margin-bottom: 2em; /* More space before CTAs */
+    max-width: 650px; /* Slightly wider */
+    line-height: 1.7; /* Increased line height */
+    text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Example of specific hero adjustments if needed */
+#hero { /* Homepage hero might be taller */
+    min-height: 70vh; /* Increased height */
+    padding: 150px 20px; /* Increased padding */
+}
+#hero h1 {
+    font-size: 4.5em; /* Even larger for homepage */
+}
+#hero p {
+    font-size: 1.6em;
+}
+
 
 /* Call to Action Button */
 .cta-button {
     display: inline-block;
-    background-color: #B084CC; /* Main purple from image inspiration */
-    color: #FFFFFF;
-    padding: 12px 25px;
-    border-radius: 25px; /* Rounded for modern feel */
-    font-size: 1.1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    padding: 14px 35px; /* Adjusted padding */
+    border-radius: 50px; /* Pill shape */
+    font-size: 1em; /* Adjusted size */
+    font-weight: 500; /* Medium weight for Poppins/Montserrat */
+    text-transform: none; /* Dribbble buttons look like sentence case or title case */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Very subtle shadow, or none */
     border: none;
     cursor: pointer;
+    line-height: 1.5; /* Ensure text is centered well if padding is asymmetrical */
 }
 
 .cta-button:hover {
-    background-color: var(--primary-purple-darker); /* Use variable */
-    transform: translateY(-3px); /* More noticeable hover effect to match other hero cta */
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* Match other hero cta */
+    background-color: var(--button-primary-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 /* Secondary Call to Action Button */
-.cta-button.cta-secondary { /* Make it more specific to override general .cta-button if needed */
-    background-color: var(--accent-lavender);
-    color: var(--text-dark);
-    margin-left: 15px; /* This was an inline style, kept for layout */
+.cta-button.cta-secondary {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
 }
 
+/* Add margin if two buttons are directly adjacent */
+.cta-button + .cta-button {
+    margin-left: 15px;
+}
+/* Or, wrap them in a div with display:flex and gap property if preferred for more complex layouts */
+
+
 .cta-button.cta-secondary:hover {
-    background-color: #c5b1d6; /* Darker shade of accent lavender */
-    transform: translateY(-3px); /* Match other hero cta hover */
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* Match other hero cta hover */
+    background-color: var(--button-secondary-hover-bg);
+    /* color: var(--button-secondary-text); */ /* Text color usually doesn't change on hover unless bg does drastically */
 }
 
 
@@ -184,85 +241,92 @@ p {
 }
 
 /* Why Us Highlights Section on Homepage */
-#why-us-highlights h2 { /* Center the heading of this section */
-    text-align: center;
-    margin-bottom: 30px; /* Add some space below heading */
+#why-us-highlights {
+    background-color: transparent; /* Make section transparent if body is cream, items will have bg */
+    /* box-shadow: none; */ /* No shadow for the section itself */
+}
+
+#why-us-highlights h2 {
+    /* text-align: center; */ /* Already centered by global h2 */
+    /* margin-bottom: 30px; */ /* Already has margin from global h2 */
 }
 .highlights-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Space items evenly */
     text-align: center;
-    margin-top: 20px; /* Original margin-top */
-    gap: 20px; /* Add gap between items */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 30px; /* Increased gap */
+    flex-wrap: wrap;
 }
 
 .highlight-item {
-    flex-basis: calc(33.333% - 20px); /* Adjust basis for gap, roughly 30% */
-    min-width: 250px; /* Minimum width before wrapping */
-    padding: 20px;
-    background-color: var(--background-white); /* Was --background-light, changed to white for better contrast if section bg is light */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.07);
-    margin-bottom: 20px; /* Space when items wrap */
+    flex-basis: calc(33.333% - 25px); /* Adjust basis for gap */
+    min-width: 280px; /* Min width before wrapping */
+    padding: 30px 25px; /* Increased padding */
+    background-color: var(--bg-secondary); /* White cards */
+    border-radius: 20px; /* Softer, larger radius */
+    /* box-shadow: 0 4px 15px rgba(0,0,0,0.03); */ /* Very subtle shadow if desired, or none */
+    margin-bottom: 20px;
+    border: 1px solid var(--border-soft); /* Soft border for definition */
 }
 
 .highlight-item h3 {
     margin-top: 10px;
     margin-bottom: 10px;
-    color: var(--primary-purple);
-    font-size: 1.3em;
+    color: var(--text-heading); /* Use standard heading color */
+    font-size: 1.4em; /* Slightly larger */
+    font-weight: 500; /* Medium weight */
 }
 
 .highlight-icon {
-    width: 50px; /* Slightly smaller icons */
-    height: 50px;
-    margin-bottom: 15px; /* More space below icon */
-    /* Example filter for black SVG to make it var(--primary-purple): */
-    /* filter: invert(67%) sepia(37%) saturate(575%) hue-rotate(225deg) brightness(89%) contrast(86%); */
+    width: 45px;
+    height: 45px;
+    margin-bottom: 20px;
+    opacity: 0.7; /* Soften icon appearance */
+    /* Consider SVG fill color via CSS if possible, or use appropriately colored SVGs */
 }
 
 
 /* About Us Page Specifics */
-#our-story p, #our-mission p {
-    font-size: 1.1em;
-    line-height: 1.7; /* Improved line height for readability */
+#our-story p, #our-mission p, #our-values p /* Added #our-values */ {
+    font-size: 1.05em; /* Standardized paragraph size */
+    line-height: 1.8; /* More leading for readability */
+    text-align: left; /* Default left align for paragraphs */
+    max-width: 750px; /* Constrain line length for readability in these text blocks */
+    margin-left: auto;
+    margin-right: auto;
+}
+#our-story, #our-mission, #our-values { /* Center the text block containers if max-width is set on p */
+    text-align: center;
 }
 
-#why-choose-us ul, .values-list { /* Grouped similar lists */
+
+#why-choose-us ul, .values-list {
     list-style: none;
     padding-left: 0;
-    margin-top: 15px;
+    margin-top: 20px;
+    max-width: 700px; /* Constrain width of these lists */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
 
 #why-choose-us li, .values-list li {
-    padding: 10px 0 10px 35px; /* Increased left padding for larger custom bullets */
-    font-size: 1.1em;
-    border-bottom: 1px dashed var(--border-color);
+    padding: 12px 0 12px 25px; /* Adjusted padding */
+    font-size: 1.05em;
+    border-bottom: 1px solid var(--border-soft); /* Softer border */
     position: relative;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-#why-choose-us li:before {
-    content: '✓';
-    color: var(--primary-purple);
+#why-choose-us li:before, .values-list li:before {
+    content: "•"; /* Simple soft bullet */
+    color: var(--accent-lavender); /* Use accent color */
     position: absolute;
-    left: 5px; /* Adjusted position */
+    left: 0px;
     top: 50%;
-    transform: translateY(-50%); /* Center vertically */
+    transform: translateY(-50%);
     font-weight: bold;
-    font-size: 1.4em; /* Larger checkmark */
-}
-
-.values-list li:before {
-    content: '▹'; /* Right-pointing triangle */
-    color: var(--primary-purple);
-    position: absolute;
-    left: 5px; /* Adjusted position */
-    top: 50%;
-    transform: translateY(-50%); /* Center vertically */
-    font-weight: bold;
-    font-size: 1.4em; /* Consistent size with checkmark */
+    font-size: 1.5em; /* Adjust size of bullet */
 }
 
 #why-choose-us li:last-child, .values-list li:last-child {
@@ -272,77 +336,105 @@ p {
 
 /* Services Page Specifics */
 .service-category {
-    margin-bottom: 30px;
+    margin-bottom: 40px; /* Increased spacing */
+    text-align: left; /* Align category content to left */
 }
-.service-category h2 {
-    font-size: 1.8em;
-    color: var(--link-color); /* Muted purple for category titles */
-    margin-bottom: 15px;
-    border-bottom: none; /* Remove default h2 border for this context */
+.service-category h2 { /* Service category titles */
+    font-size: 1.6em;
+    color: var(--text-heading);
+    margin-bottom: 20px;
+    text-align: left; /* Override global h2 center for these */
+    font-weight: 500; /* Medium weight */
 }
 .service-category ul {
     list-style: none;
     padding-left: 0;
+    display: grid; /* Use grid for service items */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 20px;
 }
 .service-category li {
-    background-color: var(--background-light); /* Slightly off-white for list items */
-    padding: 12px 18px; /* Increased padding */
-    margin-bottom: 10px; /* Increased margin */
-    border-left: 5px solid var(--primary-purple); /* Thicker accent border */
-    border-radius: 5px; /* Slightly more rounded */
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: var(--bg-secondary);
+    padding: 20px 25px;
+    border: 1px solid var(--border-soft); /* Soft border */
+    border-radius: 15px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 1em;
+    /* Remove left border from previous design */
 }
 .service-category li:hover {
-    background-color: var(--accent-lavender); /* Lighter purple tint on hover */
-    transform: translateX(5px); /* Slight shift on hover */
+    background-color: var(--accent-pink); /* Soft pink hover */
+    /* transform: translateY(-3px); */ /* Optional hover effect */
+    /* box-shadow: 0 6px 15px rgba(100,100,100,0.05); */ /* Subtle shadow on hover */
+    color: var(--text-heading); /* Ensure text contrast on hover */
 }
 
 #pricing-note {
     text-align: center;
-    font-style: italic;
-    color: #777;
-    margin-top: 20px;
-    padding: 15px;
-    background-color: var(--accent-lavender); /* Use accent color for note background */
-    opacity: 0.8;
-    border-radius: 4px;
+    font-style: normal; /* Remove italic */
+    color: var(--text-body);
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--accent-pink); /* Soft pink background */
+    opacity: 0.7; /* Keep it subtle */
+    border-radius: 15px; /* Rounded corners */
+    font-size: 0.95em;
 }
 
 
 /* Contact & Booking Page Specifics */
 #booking-form-section {
     max-width: 700px;
-    margin: 0 auto 40px auto; /* Center the form */
-    padding: 30px; /* Add padding to the form section itself */
-    background-color: var(--background-white);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Softer shadow for form container */
+    margin-left: auto; /* Handles centering along with max-width */
+    margin-right: auto;
+    /* margin-top and margin-bottom are handled by main > section */
+    padding: 40px; /* Increased padding */
+    background-color: var(--bg-secondary); /* White background for form section */
+    border-radius: 20px; /* Consistent with other sections */
+    /* box-shadow: 0 4px 20px rgba(0,0,0,0.05); */ /* Optional subtle shadow */
+    border: 1px solid var(--border-soft);
+}
+
+#booking-form-section h2 {
+    margin-bottom: 1em; /* Adjust space after h2 if it's directly in this section */
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Increased spacing */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 500; /* Slightly less bold label */
-    color: #555;
+    margin-bottom: 10px; /* Increased spacing */
+    font-weight: 500; /* Medium weight */
+    color: var(--text-heading); /* Use heading color for labels for clarity */
+    font-size: 0.95em;
 }
 
 .form-group input[type="text"],
 .form-group input[type="tel"],
 .form-group input[type="email"],
 .form-group input[type="date"],
-.form-group input[type="time"],
+.form-group input[type="time"], /* This is now a select, but keeping for potential future */
+.form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 14px; /* Increased padding */
-    border: 1px solid #ccc;
-    border-radius: 6px; /* Slightly more rounded */
+    padding: 15px 20px; /* Generous padding */
+    border: 1px solid var(--border-input);
+    border-radius: 15px; /* Softer, rounded corners */
     font-size: 1em;
-    background-color: #fdfdfd; /* Very light grey for inputs */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--bg-primary); /* Light cream background for inputs */
+    color: var(--text-body);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Poppins', 'Montserrat', sans-serif; /* Ensure font consistency */
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="tel"]::placeholder,
+.form-group input[type="email"]::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-body);
+    opacity: 0.6;
 }
 
 .form-group input[type="text"]:focus,
@@ -350,28 +442,56 @@ p {
 .form-group input[type="email"]:focus,
 .form-group input[type="date"]:focus,
 .form-group input[type="time"]:focus,
+.form-group select:focus,
 .form-group textarea:focus {
-    border-color: var(--primary-purple); /* Purple border on focus */
+    border-color: var(--accent-lavender);
     outline: none;
-    box-shadow: 0 0 8px rgba(176, 132, 204, 0.4); /* Softer, more spread out focus shadow */
+    box-shadow: 0 0 0 3px rgba(208, 186, 223, 0.2); /* Soft focus ring using accent color */
+    background-color: var(--bg-secondary); /* Brighter background on focus */
 }
 
 .form-group textarea {
-    resize: vertical; /* Allow vertical resizing */
-    min-height: 120px; /* Taller textarea */
+    resize: vertical;
+    min-height: 140px; /* Increased height */
 }
 
+.form-group select {
+    appearance: none; /* Basic styling for select, may need custom arrow for full Dribbble match */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23${encodeURIComponent(getComputedStyle(document.documentElement).getPropertyValue('--text-body').trim().substring(1))}' width='18px' height='18px'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E"); /* Basic SVG arrow, color might not update dynamically without JS */
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    padding-right: 50px; /* Space for arrow */
+}
+/* Note: Dynamically coloring SVG arrow via CSS variable is tricky. Above uses hardcoded potential color. */
+/* For a real project, use an actual SVG file or a JS solution for dynamic color. */
+
+
 #contact-details {
-    text-align: center; /* Center contact details */
+    text-align: center;
+}
+#contact-details h2 {
+    margin-bottom: 1em;
 }
 #contact-details p {
-    font-size: 1.1em;
-    margin-bottom: 10px;
+    font-size: 1.05em;
+    margin-bottom: 0.8em;
+    color: var(--text-body);
 }
 
 #contact-details strong {
-    color: var(--text-dark);
+    color: var(--text-heading);
+    font-weight: 500;
 }
+
+#map-placeholder { /* Already styled, ensure consistency */
+    border-radius: 15px; /* Match other rounding */
+    background-color: var(--accent-pink); /* Softer background */
+    opacity: 0.5;
+}
+#map-placeholder p {
+    color: var(--text-heading);
+}
+
 
 /* Footer */
 footer {
@@ -411,36 +531,94 @@ footer p {
     #hero h1, #about-hero h1, #services-hero h1, #contact-hero h1 {
         font-size: 2.5em;
     }
-    #hero p, #about-hero p, #services-hero p, #contact-hero p {
+    #hero p, #about-hero p, #services-hero p, #contact-hero p,
+    .hero-section p { /* Ensure hero paragraph also scales */
         font-size: 1.2em;
     }
+    #hero h1 { font-size: 3em; } /* Specific override for homepage hero h1 on tablet */
+    #hero p { font-size: 1.3em; } /* Specific override for homepage hero p on tablet */
+
 
     main {
         padding: 0 1rem;
     }
-    section {
-        padding: 30px 15px;
+    section, .hero-section { /* Apply to general sections and hero sections */
+        padding: 40px 15px; /* Adjusted padding for tablet */
+    }
+    .highlights-container {
+        gap: 20px; /* Reduce gap for highlight items */
+    }
+    .highlight-item {
+        flex-basis: calc(50% - 15px); /* Two items per row on tablet */
+        min-width: auto; /* Allow more flexible sizing */
     }
 }
 
 @media (max-width: 480px) {
     body {
-        font-size: 15px; /* Adjust base font size for smaller screens */
+        font-size: 15px;
     }
     nav .logo {
-        font-size: 1.5em;
+        font-size: 1.4em; /* Further reduce logo size */
+    }
+    nav ul {
+        align-items: center; /* Center nav items when they stack */
+    }
+    nav ul li {
+        margin-left: 0; /* Remove left margin when stacked */
+        margin-bottom: 5px; /* Add some bottom margin */
     }
     nav ul li a {
+        font-size: 1em; /* Slightly larger for touch */
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em; /* Scale down hero heading */
+        letter-spacing: 1px;
+    }
+    .hero-section p {
+        font-size: 1.1em; /* Scale down hero paragraph */
+        max-width: 90%;
+    }
+    #hero h1 { font-size: 2.8em; } /* Specific override for homepage hero h1 on mobile */
+    #hero p { font-size: 1.2em; }   /* Specific override for homepage hero p on mobile */
+
+    .cta-button {
+        padding: 12px 25px; /* Adjust button padding */
         font-size: 0.95em;
     }
-    .cta-button {
-        padding: 10px 20px;
-        font-size: 1em;
+    .cta-button + .cta-button {
+        margin-left: 0; /* Stack buttons */
+        margin-top: 10px; /* Add space when stacked */
     }
-    #hero h1, #about-hero h1, #services-hero h1, #contact-hero h1 {
-        font-size: 2em;
+    /* Consider making .hero-section .cta-button display: block; width: fit-content; margin: 10px auto; for stacked buttons */
+    .hero-section .cta-button {
+        display: block;
+        width: fit-content;
+        margin: 10px auto;
     }
-    #hero p, #about-hero p, #services-hero p, #contact-hero p {
-        font-size: 1em;
+     .hero-section .cta-button + .cta-button { /* Reset margin-left when stacked in hero */
+        margin-left: auto;
+    }
+
+
+    section, .hero-section {
+        padding: 30px 10px; /* Further reduce padding for mobile */
+    }
+    .highlight-item {
+        flex-basis: 100%; /* Full width for highlight items on mobile */
+        padding: 20px;
+    }
+    .service-category ul {
+        grid-template-columns: 1fr; /* Single column for service items */
+        gap: 15px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="tel"],
+    .form-group input[type="email"],
+    .form-group input[type="date"],
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 15px; /* Adjust form input padding */
     }
 }
