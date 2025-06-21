@@ -1,0 +1,446 @@
+/* Basic Reset & Body Styling */
+:root {
+    --primary-purple: #B084CC;
+    --primary-purple-darker: #8E69A6;
+    --accent-lavender: #D4C2E0; /* Lighter lavender from inspiration */
+    --text-dark: #333;
+    --text-light: #f0f0f0;
+    --background-light: #f9f9f9;
+    --background-white: #FFFFFF;
+    --link-color: #5D5D81;
+    --link-hover-color: #3E3E52;
+    --border-color: #E0E0E0;
+}
+
+body, h1, h2, h3, p, ul, li, a, form, input, textarea, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern, sleek font */
+    color: var(--text-dark);
+}
+
+body {
+    line-height: 1.6;
+    background-color: var(--background-light);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--background-white);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav .logo {
+    font-size: 1.8em;
+    font-weight: 400; /* Slightly lighter for a sleeker look */
+    color: var(--text-dark);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    font-size: 1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 5px 0; /* Add some padding for the border to sit nicely */
+    border-bottom: 2px solid transparent; /* Placeholder for active border */
+}
+
+nav ul li a.active-nav-link {
+    color: var(--primary-purple);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary-purple);
+}
+
+/* Main Content Area */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    background-color: var(--background-white);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+h1 {
+    font-size: 2.8em; /* Larger for main page titles */
+    font-weight: 300; /* Lighter weight for modern feel */
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: 400;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+}
+
+/* Hero Sections (General) */
+#hero, #about-hero, #services-hero, #contact-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/salon-hero-placeholder.jpg') no-repeat center center/cover; /* Placeholder - replace with actual image */
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+    border-radius: 8px;
+}
+
+#hero h1, #about-hero h1, #services-hero h1, #contact-hero h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#hero p, #about-hero p, #services-hero p, #contact-hero p {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #f0f0f0;
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: #B084CC; /* Main purple from image inspiration */
+    color: #FFFFFF;
+    padding: 12px 25px;
+    border-radius: 25px; /* Rounded for modern feel */
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-purple-darker); /* Use variable */
+    transform: translateY(-3px); /* More noticeable hover effect to match other hero cta */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* Match other hero cta */
+}
+
+/* Secondary Call to Action Button */
+.cta-button.cta-secondary { /* Make it more specific to override general .cta-button if needed */
+    background-color: var(--accent-lavender);
+    color: var(--text-dark);
+    margin-left: 15px; /* This was an inline style, kept for layout */
+}
+
+.cta-button.cta-secondary:hover {
+    background-color: #c5b1d6; /* Darker shade of accent lavender */
+    transform: translateY(-3px); /* Match other hero cta hover */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* Match other hero cta hover */
+}
+
+
+/* Intro Section on Homepage */
+#intro {
+    text-align: center;
+}
+
+/* Why Us Highlights Section on Homepage */
+#why-us-highlights h2 { /* Center the heading of this section */
+    text-align: center;
+    margin-bottom: 30px; /* Add some space below heading */
+}
+.highlights-container {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 20px; /* Original margin-top */
+    gap: 20px; /* Add gap between items */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.highlight-item {
+    flex-basis: calc(33.333% - 20px); /* Adjust basis for gap, roughly 30% */
+    min-width: 250px; /* Minimum width before wrapping */
+    padding: 20px;
+    background-color: var(--background-white); /* Was --background-light, changed to white for better contrast if section bg is light */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+    margin-bottom: 20px; /* Space when items wrap */
+}
+
+.highlight-item h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--primary-purple);
+    font-size: 1.3em;
+}
+
+.highlight-icon {
+    width: 50px; /* Slightly smaller icons */
+    height: 50px;
+    margin-bottom: 15px; /* More space below icon */
+    /* Example filter for black SVG to make it var(--primary-purple): */
+    /* filter: invert(67%) sepia(37%) saturate(575%) hue-rotate(225deg) brightness(89%) contrast(86%); */
+}
+
+
+/* About Us Page Specifics */
+#our-story p, #our-mission p {
+    font-size: 1.1em;
+    line-height: 1.7; /* Improved line height for readability */
+}
+
+#why-choose-us ul, .values-list { /* Grouped similar lists */
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+#why-choose-us li, .values-list li {
+    padding: 10px 0 10px 35px; /* Increased left padding for larger custom bullets */
+    font-size: 1.1em;
+    border-bottom: 1px dashed var(--border-color);
+    position: relative;
+    line-height: 1.6;
+}
+
+#why-choose-us li:before {
+    content: '✓';
+    color: var(--primary-purple);
+    position: absolute;
+    left: 5px; /* Adjusted position */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    font-weight: bold;
+    font-size: 1.4em; /* Larger checkmark */
+}
+
+.values-list li:before {
+    content: '▹'; /* Right-pointing triangle */
+    color: var(--primary-purple);
+    position: absolute;
+    left: 5px; /* Adjusted position */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    font-weight: bold;
+    font-size: 1.4em; /* Consistent size with checkmark */
+}
+
+#why-choose-us li:last-child, .values-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* Services Page Specifics */
+.service-category {
+    margin-bottom: 30px;
+}
+.service-category h2 {
+    font-size: 1.8em;
+    color: var(--link-color); /* Muted purple for category titles */
+    margin-bottom: 15px;
+    border-bottom: none; /* Remove default h2 border for this context */
+}
+.service-category ul {
+    list-style: none;
+    padding-left: 0;
+}
+.service-category li {
+    background-color: var(--background-light); /* Slightly off-white for list items */
+    padding: 12px 18px; /* Increased padding */
+    margin-bottom: 10px; /* Increased margin */
+    border-left: 5px solid var(--primary-purple); /* Thicker accent border */
+    border-radius: 5px; /* Slightly more rounded */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.service-category li:hover {
+    background-color: var(--accent-lavender); /* Lighter purple tint on hover */
+    transform: translateX(5px); /* Slight shift on hover */
+}
+
+#pricing-note {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--accent-lavender); /* Use accent color for note background */
+    opacity: 0.8;
+    border-radius: 4px;
+}
+
+
+/* Contact & Booking Page Specifics */
+#booking-form-section {
+    max-width: 700px;
+    margin: 0 auto 40px auto; /* Center the form */
+    padding: 30px; /* Add padding to the form section itself */
+    background-color: var(--background-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Softer shadow for form container */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500; /* Slightly less bold label */
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group textarea {
+    width: 100%;
+    padding: 14px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Slightly more rounded */
+    font-size: 1em;
+    background-color: #fdfdfd; /* Very light grey for inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="time"]:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-purple); /* Purple border on focus */
+    outline: none;
+    box-shadow: 0 0 8px rgba(176, 132, 204, 0.4); /* Softer, more spread out focus shadow */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px; /* Taller textarea */
+}
+
+#contact-details {
+    text-align: center; /* Center contact details */
+}
+#contact-details p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+#contact-details strong {
+    color: var(--text-dark);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px; /* Increased padding */
+    background-color: var(--text-dark); /* Dark footer */
+    color: var(--background-light); /* Lighter text for contrast */
+    margin-top: 50px; /* More space before footer */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95em; /* Slightly larger footer text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+    nav .logo {
+        margin-bottom: 15px;
+    }
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    nav ul li {
+        margin: 10px 0;
+        margin-left: 0; /* Reset margin for stacked items */
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+    #hero h1, #about-hero h1, #services-hero h1, #contact-hero h1 {
+        font-size: 2.5em;
+    }
+    #hero p, #about-hero p, #services-hero p, #contact-hero p {
+        font-size: 1.2em;
+    }
+
+    main {
+        padding: 0 1rem;
+    }
+    section {
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px; /* Adjust base font size for smaller screens */
+    }
+    nav .logo {
+        font-size: 1.5em;
+    }
+    nav ul li a {
+        font-size: 0.95em;
+    }
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    #hero h1, #about-hero h1, #services-hero h1, #contact-hero h1 {
+        font-size: 2em;
+    }
+    #hero p, #about-hero p, #services-hero p, #contact-hero p {
+        font-size: 1em;
+    }
+}
